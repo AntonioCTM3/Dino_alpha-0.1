@@ -5,8 +5,10 @@
 [node name="HUD" type="CanvasLayer"]
 
 [node name="SCORE" type="Label" parent="."]
-offset_right = 103.0
-offset_bottom = 40.0
+offset_left = 8.0
+offset_top = 568.0
+offset_right = 111.0
+offset_bottom = 608.0
 size_flags_horizontal = 4
 theme_override_fonts/font = ExtResource("1_vixq7")
 theme_override_font_sizes/font_size = 40
@@ -32,12 +34,13 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="MAX_Score" type="Label" parent="."]
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -258.0
-offset_bottom = 40.0
-grow_horizontal = 0
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 8.0
+offset_top = -40.0
+offset_right = 266.0
+grow_vertical = 0
 theme_override_fonts/font = ExtResource("1_vixq7")
 theme_override_font_sizes/font_size = 40
 text = "High score

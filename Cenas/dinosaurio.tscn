@@ -146,10 +146,11 @@ size = Vector2(81.3122, 146.154)
 size = Vector2(59.8182, 145.568)
 
 [node name="Dinosaurio" type="CharacterBody2D"]
+z_index = -1
+z_as_relative = false
 script = ExtResource("1_kyq03")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-z_index = -2
 position = Vector2(2, 4)
 scale = Vector2(4, 4)
 sprite_frames = SubResource("SpriteFrames_nomoq")

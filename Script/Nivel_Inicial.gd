@@ -29,9 +29,12 @@ func _ready():
 	$GAMEOVER.get_node("Button").pressed.connect(new_game)
 	screen_size = get_window().size # Obtiene el tamaño de la ventana
 	new_game()
+	
 
 func new_game():
 	last_obs = null
+	for obs in obstacle.duplicate():
+		remove_obs(obs)
 	obstacle.clear()
 	#guarda las variables para cuando se reinicie el juego
 	difficulty = 0
@@ -49,6 +52,9 @@ func new_game():
 
 
 func _process(delta):
+	if Input.is_action_just_pressed("Reinicio Bruto"):
+		new_game()
+		$HUD.get_node("Començo").hide()
 	if game_running:
 		speed = START_SPEED + score / 7000
 		if speed > MAX_SPEED:
@@ -81,7 +87,7 @@ func hit_obs(body):
 		game_over()
 #Genera los Obstaculos
 func generate_obs():
-	if obstacle.is_empty() or last_obs.position.x < score:
+	if obstacle.is_empty() or last_obs.position.x < score + randi_range(300,500):
 		var obs_type = obstacle_types[randi() % obstacle_types.size()]
 		var obs
 		var max_obs = difficulty + 1
@@ -103,7 +109,7 @@ func add_obs(obs,x,y):
 	obstacle.append(obs)
 #muestra la puntuacion en la ecena
 func show_score():
-	$HUD.get_node("SCORE").text = "SCORE: " + str(score/SCORE_MODIFIRE)
+	$HUD.get_node("SCORE").text = "Score: " + str(score/SCORE_MODIFIRE)
 
 #Funcion que remueve los obstaculos
 func remove_obs(obs):

@@ -17,8 +17,7 @@ position = Vector2(16, 48)
 position = Vector2(80, 520)
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(592, 352)
-process_callback = 0
+position = Vector2(576, 320)
 
 [node name="HUD" parent="." instance=ExtResource("5_e8jin")]
 
