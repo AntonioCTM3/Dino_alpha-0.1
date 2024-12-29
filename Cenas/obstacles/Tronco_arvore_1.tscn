@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://bvvcwcgm6du2j"]
+
+[ext_resource type="Texture2D" uid="uid://dv2wakrig3cy4" path="res://Tileset/Ridges/1.png" id="1_qabk8"]
+
+[node name="Area2D" type="Area2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = -1
+scale = Vector2(2, 2)
+texture = ExtResource("1_qabk8")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+scale = Vector2(1.8, 1.8)
+polygon = PackedVector2Array(23.3333, -8.33333, 12, -2, 26.1111, 5.55556, 38.3333, 13.8889, -43.8889, 13.8889, -40, -2, -26, -10, 4, -4)

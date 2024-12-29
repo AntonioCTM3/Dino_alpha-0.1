@@ -1,0 +1,27 @@
+[gd_scene load_steps=7 format=3 uid="uid://xbjnngdykgvf"]
+
+[ext_resource type="Script" path="res://Script/Nivel_Inicial.gd" id="1_5ejke"]
+[ext_resource type="PackedScene" uid="uid://bsd8s7urglwcu" path="res://Cenas/ground.tscn" id="2_o1k3n"]
+[ext_resource type="PackedScene" uid="uid://no6uyok7tjjh" path="res://Cenas/dinosaurio.tscn" id="3_xth0v"]
+[ext_resource type="PackedScene" uid="uid://h16l5hmsv85f" path="res://Cenas/bg.tscn" id="4_r7h82"]
+[ext_resource type="PackedScene" uid="uid://bbe2bq7wjnb1l" path="res://Cenas/hud.tscn" id="5_e8jin"]
+[ext_resource type="PackedScene" uid="uid://cltu52kdf1djt" path="res://Cenas/gameover.tscn" id="6_b3urx"]
+
+[node name="nivel_inicial" type="Node"]
+script = ExtResource("1_5ejke")
+
+[node name="Node2D" parent="." instance=ExtResource("4_r7h82")]
+position = Vector2(16, 48)
+
+[node name="Dinosaurio" parent="." instance=ExtResource("3_xth0v")]
+position = Vector2(80, 520)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(592, 352)
+process_callback = 0
+
+[node name="HUD" parent="." instance=ExtResource("5_e8jin")]
+
+[node name="GAMEOVER" parent="." instance=ExtResource("6_b3urx")]
+
+[node name="StaticBody2D" parent="." instance=ExtResource("2_o1k3n")]

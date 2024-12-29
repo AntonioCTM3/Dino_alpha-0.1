@@ -1,0 +1,44 @@
+[gd_scene load_steps=2 format=3 uid="uid://bbe2bq7wjnb1l"]
+
+[ext_resource type="FontFile" uid="uid://clir1fp166u6d" path="res://DigitalDisco.ttf" id="1_vixq7"]
+
+[node name="HUD" type="CanvasLayer"]
+
+[node name="SCORE" type="Label" parent="."]
+offset_right = 103.0
+offset_bottom = 40.0
+size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("1_vixq7")
+theme_override_font_sizes/font_size = 40
+text = "Score"
+vertical_alignment = 1
+
+[node name="Començo" type="Label" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -163.5
+offset_top = -16.0
+offset_right = 163.5
+offset_bottom = 16.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("1_vixq7")
+theme_override_font_sizes/font_size = 40
+text = "Press start to play"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MAX_Score" type="Label" parent="."]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -258.0
+offset_bottom = 40.0
+grow_horizontal = 0
+theme_override_fonts/font = ExtResource("1_vixq7")
+theme_override_font_sizes/font_size = 40
+text = "High score
+"
