@@ -2,14 +2,14 @@ extends CharacterBody2D
 
 # variáveis ​​​​básicas de dinossauros
 const GRAVITY: int = 3900
-const JUMP_SPEED: int = -1150
-const SMASH: int = 2150
+const JUMP_SPEED: int = -1180
+const SMASH: int = 1150
 
 func _physics_process(delta): #chama delta mais a fisicas de godot
 	if not is_on_floor():
 		velocity.y += GRAVITY * delta
 	if Input.is_action_just_released("ui_accept") and velocity.y < 0:
-		velocity.y = JUMP_SPEED / 10
+		velocity.y = JUMP_SPEED / 3
 
 	if not is_on_floor() and Input.is_action_pressed("ui_down"):
 		velocity.y = SMASH

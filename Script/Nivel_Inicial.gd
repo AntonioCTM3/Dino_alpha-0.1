@@ -26,6 +26,7 @@ var last_obs
 var high_score : int
 
 func _ready():
+	$HUD.get_node("MAX_Score").text = "High score: " + str(Savedata.max_score/SCORE_MODIFIRE)
 	$GAMEOVER.get_node("Button").pressed.connect(new_game)
 	screen_size = get_window().size # Obtiene el tamaño de la ventana
 	new_game()
@@ -132,8 +133,8 @@ func game_over():
 	
 #muestra tu puntuacion alta en pantalla
 func check_high_score():
-	if score > high_score:
-		high_score = score
-		$HUD.get_node("MAX_Score").text = "High Score: " + str(high_score/SCORE_MODIFIRE)
-		
+	if score > Savedata.max_score:
+		Savedata.max_score = score
+		$HUD.get_node("MAX_Score").text = "High score: " + str(Savedata.max_score/SCORE_MODIFIRE)
+	Savedata.save_score()
 	
