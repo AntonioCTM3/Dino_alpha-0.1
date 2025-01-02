@@ -25,6 +25,10 @@ window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
 window/ios/allow_high_refresh_rate=false
 
+[editor]
+
+movie_writer/fps=30
+
 [input]
 
 ui_accept={

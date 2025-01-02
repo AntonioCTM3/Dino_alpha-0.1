@@ -1,0 +1,87 @@
+[gd_scene load_steps=13 format=3 uid="uid://coqdc6fkn7kp5"]
+
+[ext_resource type="Texture2D" uid="uid://cg6fv867lfpnl" path="res://Tileset/coin2_20x20-Sheet.png" id="1_suget"]
+[ext_resource type="Script" path="res://Script/coins.gd" id="2_esaik"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pbdtg"]
+atlas = ExtResource("1_suget")
+region = Rect2(0, 0, 20, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yhgvn"]
+atlas = ExtResource("1_suget")
+region = Rect2(20, 0, 20, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_04vs7"]
+atlas = ExtResource("1_suget")
+region = Rect2(40, 0, 20, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1oblq"]
+atlas = ExtResource("1_suget")
+region = Rect2(60, 0, 20, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sic8f"]
+atlas = ExtResource("1_suget")
+region = Rect2(80, 0, 20, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a2op2"]
+atlas = ExtResource("1_suget")
+region = Rect2(100, 0, 20, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lsixn"]
+atlas = ExtResource("1_suget")
+region = Rect2(120, 0, 20, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k8t0d"]
+atlas = ExtResource("1_suget")
+region = Rect2(140, 0, 20, 20)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_1ftwj"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pbdtg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yhgvn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_04vs7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1oblq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sic8f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a2op2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lsixn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k8t0d")
+}],
+"loop": true,
+"name": &"default",
+"speed": 8.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3vsd8"]
+size = Vector2(14.0539, 13.8479)
+
+[node name="Area2D" type="Area2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(2.5, 2.5)
+sprite_frames = SubResource("SpriteFrames_1ftwj")
+autoplay = "default"
+frame_progress = 0.0849485
+script = ExtResource("2_esaik")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(9.53674e-07, -1.42109e-14)
+scale = Vector2(2.78498, 2.83293)
+shape = SubResource("RectangleShape2D_3vsd8")
+
+[connection signal="body_entered" from="." to="AnimatedSprite2D" method="_on_area_2d_body_entered"]

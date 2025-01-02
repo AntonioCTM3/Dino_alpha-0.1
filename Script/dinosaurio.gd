@@ -19,6 +19,7 @@ func _physics_process(delta): #chama delta mais a fisicas de godot
 		else:
 			$col_correndo.disabled = false
 			if Input.is_action_just_pressed("ui_accept"):#si a tecla espaço foi pressionando 
+				
 				velocity.y = JUMP_SPEED # a velocidade Y sera igual a jump_speed
 				$JumpSound.play()
 			elif Input.is_action_pressed("ui_down"): #si a tecla abaixo estiver apertada

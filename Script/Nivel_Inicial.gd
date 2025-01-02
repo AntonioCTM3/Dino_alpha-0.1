@@ -1,6 +1,8 @@
 extends Node
+#Varaibles de los recoletables
+var coin1_scene = preload("res://Cenas/coins.tscn")
+var coins : Array = []
 #Variables de los obstaculos
-
 var pedra1 = preload("res://Cenas/obstacles/pedra1.tscn")
 var pedra2 = preload("res://Cenas/obstacles/pedra2.tscn")
 var t_arvore1 = preload("res://Cenas/obstacles/Tronco_arvore_1.tscn")
@@ -30,9 +32,9 @@ func _ready():
 	$GAMEOVER.get_node("Button").pressed.connect(new_game)
 	screen_size = get_window().size # Obtiene el tamaño de la ventana
 	new_game()
-	
 
 func new_game():
+
 	last_obs = null
 	for obs in obstacle.duplicate():
 		remove_obs(obs)
@@ -62,6 +64,11 @@ func _process(delta):
 			speed = MAX_SPEED
 		adjust_difficulty()
 		generate_obs()
+		for coin in coins.duplicate():
+			if coin.position.x < ($Camera2D.position.x - screen_size.x):
+				remove_coins(coin)
+		if randi() % 1000 == 0:
+			generate_coins()
 		#Mueve la camara y el dinosaurio hacia alfrente
 		$Dinosaurio.position.x += speed
 		$Camera2D.position.x += speed
@@ -82,10 +89,16 @@ func _process(delta):
 			game_running = true
 			$HUD.get_node("Començo").hide()
 		
-#Colision del dino
+#Colision del dino con obs
 func hit_obs(body):
 	if body.name == "Dinosaurio":
 		game_over()
+#Colision de la coin
+func collision_coins(body):
+	if body.name == "Dinosaurio":
+		remove_coins(self)
+		print("Get_coin")
+	
 #Genera los Obstaculos
 func generate_obs():
 	if obstacle.is_empty() or last_obs.position.x < score + randi_range(300,500):
@@ -138,3 +151,20 @@ func check_high_score():
 		$HUD.get_node("MAX_Score").text = "High score: " + str(Savedata.max_score/SCORE_MODIFIRE)
 	Savedata.save_score()
 	
+func generate_coins():
+	var num_coins = randi() % 1 + 3 
+	var ground_y = $StaticBody2D.position.y
+	for i in range(num_coins):
+		var coin = coin1_scene.instantiate()
+		var coin_x = $Camera2D.position.x + get_window().size.x + (i * 250)
+		var coin_y = ground_y - (randi() % 120 + 150)
+		coin.position = Vector2i(coin_x, coin_y)
+		add_child(coin)
+		coins.append(coin)
+		coin.body_entered.connect(collision_coins)
+		print("Nueva Moneda Creada")
+	
+func remove_coins(coin):
+	if coin in coins:
+		coins.erase(coin)
+		coin.queue_free()
